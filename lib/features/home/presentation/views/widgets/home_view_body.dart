@@ -54,6 +54,14 @@ class BestSellerListViewItem extends StatelessWidget {
               ),
             ),
           ),
+          Column(
+            children: [
+              Text(
+                'Harry Potter and the Goblet of Fire',
+                style: Styles.textSyle20,
+              ),
+            ],
+          ),
         ],
       ),
     );
