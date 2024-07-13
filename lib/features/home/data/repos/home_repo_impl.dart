@@ -14,8 +14,7 @@ class HomeRepoImpl implements HomeRepo {
   Future<Either<Failure, List<BookModel>>> fetchNewsetBooks() async {
     try {
       var data = await apiService.get(
-        endPoind:
-            'volumes?Filtering=free-ebooks&Sorting=newest&q=subject:Programming',
+        endPoind: 'volumes?Filtering=free-ebooks&Sorting=newest&q=flutter',
       );
       List<BookModel> booksList = (data['items'] as List<dynamic>)
           .map((e) => BookModel.fromJson(e))
@@ -39,7 +38,7 @@ class HomeRepoImpl implements HomeRepo {
   Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async {
     try {
       var data = await apiService.get(
-        endPoind: 'volumes?Filtering=free-ebooks&q=subject:Programming',
+        endPoind: 'volumes?Filtering=free-ebooks&q=Programming',
       );
       List<BookModel> booksList = (data['items'] as List<dynamic>)
           .map((e) => BookModel.fromJson(e))

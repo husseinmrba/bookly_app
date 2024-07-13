@@ -21,7 +21,8 @@ class FeaturedBooksListView extends StatelessWidget {
                 itemCount: state.books.length,
                 itemBuilder: (context, index) {
                   var imageUrl =
-                      state.books[index].volumeInfo.imageLinks.thumbnail;
+                      (state.books[index].volumeInfo.imageLinks?.thumbnail) ??
+                          '';
                   return Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 8,
