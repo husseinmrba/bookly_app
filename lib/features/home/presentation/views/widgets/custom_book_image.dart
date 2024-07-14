@@ -7,17 +7,20 @@ class CustomBookImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isValidUrl = Uri.tryParse(imageUrl)?.hasAbsolutePath ?? false;
     return ClipRRect(
       borderRadius: BorderRadius.circular(16),
       child: AspectRatio(
         aspectRatio: 2.6 / 4, // width to height
-        child: CachedNetworkImage(
-          fit: BoxFit.cover,
-          imageUrl: imageUrl,
-          errorWidget: (context, url, error) => const Icon(
-            Icons.error,
-          ),
-        ),
+        child: isValidUrl
+            ? CachedNetworkImage(
+                fit: BoxFit.cover,
+                imageUrl: imageUrl,
+                errorWidget: (context, url, error) {
+                  return const Icon(Icons.error);
+                },
+              )
+            : const Icon(Icons.error),
       ),
     );
   }

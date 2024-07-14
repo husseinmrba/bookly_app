@@ -4,8 +4,8 @@ import 'package:bookly_app/features/home/presentation/views/widgets/book_list_vi
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class BestSellerListView extends StatelessWidget {
-  const BestSellerListView({super.key});
+class NewsetBooksListView extends StatelessWidget {
+  const NewsetBooksListView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class BestSellerListView extends StatelessWidget {
       builder: (context, state) {
         if (state is NewsetBooksSuccess) {
           return ListView.builder(
-              // shrinkWrap: true,
+              shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               padding: EdgeInsets.zero,
               itemCount: state.books.length,
