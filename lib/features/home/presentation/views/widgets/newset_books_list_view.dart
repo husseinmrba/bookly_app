@@ -1,4 +1,5 @@
 import 'package:bookly_app/core/widgets/custom_error_widget.dart';
+import 'package:bookly_app/core/widgets/custom_progress_indicator.dart';
 import 'package:bookly_app/features/home/presentation/manager/newset_books_cubit/newset_books_cubit.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_list_view_item.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +32,7 @@ class NewsetBooksListView extends StatelessWidget {
           return CustomErrorWidget(errMsg: state.errMsg);
         } else {
           return const Center(
-            child: CircularProgressIndicator(),
+            child: CustomProgressIndicator(),
           );
         }
       },
