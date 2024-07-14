@@ -14,29 +14,29 @@ class SimilarBooksListView extends StatelessWidget {
       builder: (context, state) {
         if (state is SimilarBooksSuccess) {
           return SizedBox(
-          height: MediaQuery.of(context).size.height * .15,
-          child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: 5,
-              itemBuilder: (context, index) {
-                return const Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 5,
-                  ),
-                  child: CustomBookImage(
-                    imageUrl:
-                        'https://m.media-amazon.com/images/I/71+mhWHnBdL._AC_SY679_.jpg',
-                  ),
-                );
-              }),
-        );
-      
+            height: MediaQuery.of(context).size.height * .15,
+            child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: state.books.length,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 5,
+                    ),
+                    child: CustomBookImage(
+                      imageUrl: (state
+                              .books[index].volumeInfo.imageLinks?.thumbnail) ??
+                          '',
+                    ),
+                  );
+                }),
+          );
         } else if (state is SimilarBooksFailure) {
           return CustomErrorWidget(errMsg: state.errMsg);
         } else {
           return const CustomLoadingIndicator();
         }
-        },
+      },
     );
   }
 }
